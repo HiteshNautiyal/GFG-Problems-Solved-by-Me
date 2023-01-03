@@ -1,0 +1,31 @@
+vector<int> wavePrint(vector<vector<int>> arr, int nRows, int mCols)
+{
+    //In 2D-Array,always remember that array_name[rows][cols]
+    //If column is even, then, print row from 0 to n 
+    //If column is odd, then, print row from n to 0 
+    
+    vector<int> v1;
+    for(int i=0;i<mCols;i++)
+    {
+        if(i%2==0)
+        {
+            for(int j=0;j<nRows;j++)
+            {
+                v1.push_back(arr[j][i]);
+            }
+           
+        }
+        
+        
+        if(i%2==1)
+        {
+            for(int j=nRows-1;j>=0;j--)
+            {
+                v1.push_back(arr[j][i]);
+            }
+            
+        }
+    }
+    return v1;
+    
+}
