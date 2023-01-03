@@ -1,0 +1,27 @@
+void convertToWave(int n, vector<int>& arr){
+        
+        
+        //last element ko direct print krna hai usko comapre nh krna hai.
+        //even index wale mei , element apne next wale se bada hona chahiye.
+        //odd index wale mei, element apne next wale se chota hona chahiye.
+        
+        for(int i=0;i<n-1;i++)
+        {
+            if(i%2==0)
+            {
+                if(arr[i]<arr[i+1])
+                {
+                    swap(arr[i],arr[i+1]);
+                }
+            }
+            
+            if(i%2==1)
+            {
+                if(arr[i]>arr[i+1])
+                {
+                    swap(arr[i],arr[i+1]);
+                }
+            }
+        }
+        
+    }
