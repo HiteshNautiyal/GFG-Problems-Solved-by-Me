@@ -1,0 +1,12 @@
+ int MissingNumber(vector<int>& array, int n) {
+        // Your code goes here
+        int sum = 0 ;
+        for(int i=0;i<n-1;i++)
+        {
+            sum = sum + array[i];
+        }
+        
+        int sum_of_terms = (n*(n+1))/2; 
+        
+        return (sum_of_terms-sum);//AP formula best for find missing numbers
+    }
