@@ -1,0 +1,13 @@
+string removeConsecutiveCharacter(string S)
+    {
+        // code here.
+        string res = "";
+        for(int i=0;i<S.length();i++)
+        {
+            if(i<S.length()-1 and S[i]==S[i+1])
+            continue;
+            else
+            res.push_back(S[i]);
+        }
+        return res;
+    }
