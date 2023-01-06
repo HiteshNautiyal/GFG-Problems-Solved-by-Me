@@ -1,0 +1,39 @@
+int longestKSubstr(string s, int k) {
+    
+    int i = 0;
+    int ans = -1;//if, string mei ek bh unique na ho 
+    int freq[26]= {0};
+    int count=0;//is for frequency array length
+    
+    for(int j=0; j<s.length(); j++)
+    {
+        int index = s[j] - 'a';
+        freq[index]++;//phle hum character ko count krenge
+        
+        if(freq[index] == 1) 
+        count++;//agr koi character ek baar aa rkha h uske baad chahe kitne baar bh aaye length 1 hi manenge
+        
+         while(count>k)//frequency array length means unique character given k se jyda ho jaye
+            {
+                freq[s[i]-'a']--;//hum i so ki point krrh tha '0'index pe hum wnh s character remove krte rhenge
+                
+                if(freq[s[i]-'a']==0)//agr koi character completely uss substring s hatt jaye toh frequency array length decrease krdo
+                count--;
+                
+                i++;//then 'i'ko next index m point krte rho
+                
+            }
+            
+            
+        if(count==k)//when jitne unique character chahiye utne hogye toh wo maybe hmara answer ho toh usse store krdo and aage bdho or agr new answer jo previous s better ho toh update bh kr sko
+        {
+            ans = max(ans, j-i+1);
+            
+        }
+        
+           
+            
+        
+    }
+    return ans;
+    }
