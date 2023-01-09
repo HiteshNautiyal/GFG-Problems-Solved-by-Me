@@ -1,0 +1,21 @@
+class Solution{
+public:	
+		
+	string removeDups(string S) 
+	{
+	    // Your code goes here
+	    int freq[26]={0};
+	    string res="";
+	    for(int i=0;i<S.length();i++)
+	    {
+	        int index = S[i]-'a';
+	        freq[index]++;//sbki frequency count krte jao
+	        
+	        if(freq[index] == 1) //ussi conitnue way mei jesi hi frequency only 1 hogi usse push krdo new string mei
+	        res.push_back(S[i]);
+	    }
+	    
+	    
+	    return res;
+	}
+};
