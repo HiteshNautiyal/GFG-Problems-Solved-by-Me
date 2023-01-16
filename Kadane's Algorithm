@@ -1,0 +1,19 @@
+class Solution{
+    public:
+    // arr: input array
+    // n: size of array
+    //Function to find the sum of contiguous subarray with maximum sum.
+    long long maxSubarraySum(int arr[], int n){
+        
+        int local = arr[0];
+        int global = arr[0]; //its not need to take 'long long'datatype becoz we call max so there is a function who has both 'int'type parameters
+        
+        for(int i=1;i<n;i++)
+        {
+            local = max(arr[i], arr[i]+local);
+            global = max(global, local);
+        }
+        return global;
+        
+    }
+};
