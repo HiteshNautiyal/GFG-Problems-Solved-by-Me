@@ -1,0 +1,84 @@
+class Solution
+{
+    public:
+    void merge(int arr[], int l, int m, int r)
+    {
+         
+
+    int len1 = m-l+1;//its a length of starting to mid of a array
+    int len2 = r-m;//its a length of remaining array
+
+    int *first = new int[len1];//create a another array whose length is half of given input array
+    int *second = new int[len2];//same create a another array whose length is half of given input array
+    
+    //copy elements
+    
+    int main_array_index = l;//after merge all arrays it is represent index of resultant array 
+
+    //first we copy all the elements of the first half array 
+    for(int i=0; i<len1; i++)
+    {
+        first[i] = arr[main_array_index++];
+    }
+
+    main_array_index = m+1;
+
+    //now, we copy all the elements of the remaining half array
+    for(int i=0; i<len2; i++)
+    {
+        second[i] = arr[main_array_index++];
+    }
+
+    
+    //now, we stored all the elements in resultant array
+    //after this, we sort the elements of resultant array
+
+    int index1 = 0;
+    int index2 = 0;
+    main_array_index = l;
+
+    while(index1 < len1 and index2 < len2)
+    {
+        if(first[index1] < second[index2])//when first array me elements second array se smaller hai then we store that element in main array 
+        {
+            arr[main_array_index++] = first[index1++];
+        }
+        else
+        {
+            arr[main_array_index++] = second[index2++];
+        }
+    }
+
+    while(index1 < len1)
+    {
+        arr[main_array_index++] = first[index1++];
+    }
+    
+    while(index2 < len2)
+    {
+        arr[main_array_index++] = second[index2++];
+    }
+
+
+    }
+    public:
+    void mergeSort(int arr[], int l, int r)
+    {
+    
+    //base case
+    if(l>=r) //normal binary search condition in recursion
+    {
+        return;
+    }
+
+    int m = (l+r)/2;
+
+    mergeSort(arr, l, m);//left part sort
+    
+    mergeSort(arr, m+1, r);//right part sort
+    
+    
+
+    merge(arr, l, m, r);//we merge both left and right part 
+    }
+};
