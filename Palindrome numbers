@@ -1,0 +1,30 @@
+class Solution{
+public:
+    int isPallindrome(long long int N){
+        
+     vector<int> v;
+     
+     while(N > 0)
+        {
+           int rem = N%2;
+           v.push_back(rem);
+           
+           N = N/2;
+        }
+        
+    int start = 0;
+    int end = v.size()-1;
+    
+    while(start < end)
+    {
+        if(v[start] != v[end])
+        return 0;
+        
+        start++;
+        end--;
+        
+    }
+    return 1;
+        
+    }
+};
