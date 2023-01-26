@@ -1,0 +1,60 @@
+class Solution
+{
+    
+    public:
+    int partition (int arr[], int low, int high)
+    {
+       int pivot = arr[low];//take first element as a pivot
+       int count = 0;
+
+    for(int i=low+1; i<=high; i++)
+    {
+        if(arr[i] <= pivot)//jo bhi element pivot s less hoga count increase hoga jisse pta chlega pivot ki right position
+        count++;
+    }
+
+    int pivotindex = low + count;//pivot right index/position
+
+    swap(arr[pivotindex], arr[low]);//then we swap first element of an array with their right indices
+    
+    int i = low, j = high;
+
+    //now, we satify the conditon that is : - [ <e, e, >e]
+
+    while(i < pivotindex and j > pivotindex)//starting jab tak pivot ke index tak nhi reach hoti and ending jab tak pivotindex tak nhi kam ho jati
+    {
+        while(arr[i] <= pivot)//agr pivot se less hai usse phle ke element than we only go to next indices
+        i++;
+
+        while(arr[j] > pivot)//agr pivot se greater than hai right ke element than we go to next previous indices
+        j--;
+
+        if(i<pivotindex and j>pivotindex) // agr dono upar loop ho jate hai done so, we swap if condition not satisfy
+        swap(arr[i++], arr[j--]);
+
+    }
+
+    return pivotindex;
+    }
+    
+    public:
+    //Function to sort an array using quick sort algorithm.
+    void quickSort(int arr[], int low, int high)
+    {
+        //base case
+    if(low>=high)
+    return;
+
+    //partion logic
+    int p = partition(arr, low, high);
+
+    //left part sort
+    quickSort(arr, low, p-1);
+    
+    //middle element(p) is sorted in quick sort so we sort their left and right part only
+
+
+    //right part sort
+    quickSort(arr, p+1, high);
+    }
+};
