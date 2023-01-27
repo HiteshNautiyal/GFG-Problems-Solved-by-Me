@@ -1,0 +1,19 @@
+class Solution
+{
+    public:
+    //Function to sort the array using bubble sort algorithm.
+    void bubbleSort(int arr[], int n)
+    {
+        //n-1 rounds honge when total n rounds hai toh
+    for(int i=1;i<n;i++)
+    {
+        //after each rounds largest element sorted one by one in each rounds so we always decrease rounds in every rounds
+
+        for(int j=0; j<n-i; j++)
+        {
+            if(arr[j] > arr[j+1])
+            swap(arr[j], arr[j+1]);
+        }
+    }
+    }
+};
