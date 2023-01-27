@@ -1,0 +1,20 @@
+class Solution
+{
+    public:
+    
+    void selectionSort(int arr[], int n)
+    {
+       for(int i=0; i<n-1; i++)
+    {
+        int minIndex = i; //firstly, we assume to take first index element is a smallest element of the given array
+
+        for(int j=i+1; j<n; j++)//check krna h uske next se end tak ki koi uss minimum se less ho toh swap krdo
+        {
+            if(arr[j] < arr[minIndex])
+            minIndex = j;
+        }
+
+        swap(arr[minIndex], arr[i]);
+    }   
+    }
+};
