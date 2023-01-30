@@ -1,0 +1,37 @@
+class Solution
+{
+    void solve(string S, vector<string>& result, int index)
+{
+    //base case
+    if(index >= S.length())
+    {
+        
+        result.push_back(S);
+        
+        return;
+    }
+    
+    for(int i=index; i<S.length(); i++)
+    {
+        swap(S[index], S[i]);
+
+        solve(S, result, index+1);
+         
+         swap(S[index], S[i]);
+        
+    }
+}
+	public:
+		vector<string>find_permutation(string S)
+		{
+		  vector<string> result;
+
+    solve(S, result, 0);
+
+    sort(result.begin(), result.end());
+    
+    result.erase(unique(result.begin(), result.end()), result.end());//if we have duplicate string output in a vector so we use this in-built function
+    return result;
+		    
+		}
+};
