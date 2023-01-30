@@ -1,0 +1,23 @@
+class Solution{
+public:	
+	int matSearch (vector <vector <int>> &mat, int N, int M, int X)
+	{
+	    int start = 0;
+        int end = M-1;
+    
+    //this is a two pointer approach
+    while(start < N and end >= 0)
+    {
+        int element = mat[start][end];
+
+        if(element == X)
+        return 1;
+
+        if(element < X)
+        start++;
+        else
+        end--;
+    }
+    return 0;
+	}
+};
